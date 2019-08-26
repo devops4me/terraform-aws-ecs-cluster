@@ -13,6 +13,7 @@ resource aws_ecs_task_definition workload {
     family = "${ var.in_ecosystem }-${ var.in_workload_names[ count.index ] }-workload-${ var.in_timestamp }"
 
     task_role_arn = var.in_ecs_task_role_arn
+    execution_role_arn = var.in_ecs_task_role_arn
     network_mode = "host"
     container_definitions = element( var.in_container_definitions, count.index )
 
