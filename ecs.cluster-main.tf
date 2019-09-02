@@ -41,7 +41,7 @@ resource aws_ecs_task_definition workload {
             Name = "${ var.in_ecosystem }-${ var.in_workload_names[ count.index ] }-workload-${ var.in_timestamp }",
             Desc = "This ${ var.in_ecosystem } ${ var.in_workload_names[ count.index ] } task definition ${ var.in_description }"
         },
-        var.in_mandatory_tags
+        var.in_mandated_tags
     )
 }
 
@@ -55,7 +55,7 @@ resource aws_ecs_task_definition workload {
 resource aws_ecs_cluster cluster {
 
     name = "${ var.in_ecosystem }-cluster-${ var.in_timestamp }"
-    tags = merge( local.ecs_cluster_tags, var.in_mandatory_tags )
+    tags = merge( local.ecs_cluster_tags, var.in_mandated_tags )
 }
 
 
@@ -95,7 +95,7 @@ resource aws_ecs_service this {
             Name = "${ var.in_ecosystem }-ecs-${ var.in_workload_names[ count.index ] }-service-${ var.in_timestamp }"
             Desc = "This ${ var.in_ecosystem } ECS ${ var.in_workload_names[ count.index ] } service ${ var.in_description }"
         },
-        var.in_mandatory_tags
+        var.in_mandated_tags
     )
 }
 
